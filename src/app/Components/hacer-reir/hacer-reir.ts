@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { trigger, style, animate, transition } from '@angular/animations';
+//import { trigger, style, animate, transition } from '@angular/animations';
 import { NgFor } from '@angular/common';
 
 interface VideoDivertido {
@@ -12,14 +12,6 @@ interface VideoDivertido {
   imports: [NgFor],
   templateUrl: './hacer-reir.html',
   styleUrl: './hacer-reir.css',
-  animations: [
-    trigger('fadeIn', [
-      transition(':enter', [
-        style({ opacity: 0 }),
-        animate('500ms ease-in', style({ opacity: 1 })),
-      ]),
-    ]),
-  ],
 })
 export class HacerReir {
   videos: VideoDivertido[] = [
