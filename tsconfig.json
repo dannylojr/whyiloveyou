@@ -15,12 +15,23 @@
     "lib": [
       "es2022",
       "dom"
-    ]
+    ],
+    "types": [
+      "jasmine",
+      "node"
+    ] // Explicitly include only necessary types
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  }
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
 }
