@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-//import { trigger, style, animate, transition } from '@angular/animations';
 import { NgFor } from '@angular/common';
 
 interface VideoDivertido {
