@@ -16,6 +16,7 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     // Provide custom error handler if you need global error handling
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
+    provideAnimations()
     // Add other providers here
   ]
 };
