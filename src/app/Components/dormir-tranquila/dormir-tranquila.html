@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="stars-bg"></div>
+    <div class="luna-css"></div>
+    <div class="frase">Que descanses, mi amor 💤</div>
+
+    <div class="contenido">
+        <h2>Para dormir tranquila</h2>
+        <button *ngFor="let audio of audios; let i = index" (click)="reproducir(i)">
+            ▶ {{ audio.titulo }}
+        </button>
+        <button (click)="detenerTodo()">⏹ Detener todo</button>
+        <div *ngIf="audioActivo" class="reproduciendo">🎧 Reproduciendo: {{ audioActivo }}</div>
+    </div>
+</div>

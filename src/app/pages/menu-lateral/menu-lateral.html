@@ -1,0 +1,75 @@
+<!-- Overlay para el fondo -->
+<div class="menu-overlay" [class.active]="isOpen" (click)="toggleMenu()"></div>
+
+<!-- Botón hamburguesa -->
+<button class="hamburger" (click)="toggleMenu()" [class.active]="isOpen" aria-label="Toggle navigation menu">
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+</button>
+
+<!-- Menú lateral -->
+<nav class="side-menu" [class.open]="isOpen" role="navigation">
+  <!-- Header del menú -->
+  <div class="menu-header">
+    <button class="close-btn" (click)="toggleMenu()" aria-label="Close menu">
+      <i class="close-icon">✖</i>
+    </button>
+    <div class="menu-brand">
+      <div class="brand-icon">💕</div>
+      <h2 class="brand-title">Mi Amor</h2>
+      <p class="brand-subtitle">Especial para ti</p>
+    </div>
+  </div>
+
+  <!-- Lista de opciones del menú -->
+  <ul class="menu-list" role="menubar">
+    <li class="menu-item" role="none">
+      <a routerLink="/home" (click)="toggleMenu()" class="menu-link" role="menuitem" routerLinkActive="active">
+        <span class="menu-icon">💌</span>
+        <span class="menu-text">100 Razones</span>
+        <span class="menu-arrow">→</span>
+      </a>
+    </li>
+
+    <li class="menu-item" role="none">
+      <a routerLink="/extrañar-voz" (click)="toggleMenu()" class="menu-link" role="menuitem" routerLinkActive="active">
+        <span class="menu-icon">🎙️</span>
+        <span class="menu-text">Cuando extrañes mi voz</span>
+        <span class="menu-arrow">→</span>
+      </a>
+    </li>
+
+    <li class="menu-item" role="none">
+      <a routerLink="/dormir" (click)="toggleMenu()" class="menu-link" role="menuitem" routerLinkActive="active">
+        <span class="menu-icon">🌙</span>
+        <span class="menu-text">Para dormir tranquila</span>
+        <span class="menu-arrow">→</span>
+      </a>
+    </li>
+
+    <li class="menu-item" role="none">
+      <a routerLink="/dudas" (click)="toggleMenu()" class="menu-link" role="menuitem" routerLinkActive="active">
+        <span class="menu-icon">❤️</span>
+        <span class="menu-text">Cuando dudes de nosotros</span>
+        <span class="menu-arrow">→</span>
+      </a>
+    </li>
+
+    <li class="menu-item" role="none">
+      <a routerLink="/reir" (click)="toggleMenu()" class="menu-link" role="menuitem" routerLinkActive="active">
+        <span class="menu-icon">😂</span>
+        <span class="menu-text">Para hacerte reír</span>
+        <span class="menu-arrow">→</span>
+      </a>
+    </li>
+  </ul>
+
+  <!-- Footer del menú -->
+  <div class="menu-footer">
+    <div class="footer-decoration">
+      <span class="heart-pulse">💖</span>
+      <p class="footer-text">Hecho con amor</p>
+    </div>
+  </div>
+</nav>

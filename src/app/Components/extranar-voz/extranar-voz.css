@@ -1,0 +1,172 @@
+/* Estructura principal */
+.audio-app {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #8B0000, #A52A2A);
+    min-height: 100%;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #F5E8C7;
+}
+
+/* Encabezado */
+.app-header {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    max-width: 600px;
+    padding: 0 1rem;
+}
+
+.app-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 5vw, 2.2rem);
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    line-height: 1.2;
+}
+
+.app-subtitle {
+    font-size: clamp(0.9rem, 3vw, 1rem);
+    opacity: 0.9;
+    font-weight: 300;
+    margin-top: 0;
+}
+
+/* Lista de audios */
+.audio-collection {
+    width: 100%;
+    max-width: 500px;
+    padding: 0 1rem;
+}
+
+.audio-item {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.audio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.audio-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.audio-title {
+    font-size: clamp(1rem, 4vw, 1.1rem);
+    font-weight: 500;
+    color: #4B3F2F;
+    margin: 0;
+    text-align: center;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(139, 0, 0, 0.1);
+}
+
+/* Controles de audio */
+.audio-player-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.audio-element {
+    flex-grow: 1;
+    height: 42px;
+    border-radius: 21px;
+    outline: none;
+    min-width: 0;
+}
+
+.audio-element::-webkit-media-controls-panel {
+    background: #FFF8DC;
+    border-radius: 21px;
+}
+
+.audio-element::-webkit-media-controls-play-button,
+.audio-element::-webkit-media-controls-mute-button {
+    background-color: #8B0000;
+    border-radius: 50%;
+}
+
+.audio-element::-webkit-media-controls-current-time-display,
+.audio-element::-webkit-media-controls-time-remaining-display {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.75rem;
+}
+
+.audio-element::-webkit-media-controls-timeline {
+    background: rgba(139, 0, 0, 0.1);
+    border-radius: 5px;
+    margin: 0 8px;
+}
+
+/* Indicador de corazón */
+.heart-indicator {
+    font-size: 2rem;
+    color: #8B0000;
+    transition: transform 0.2s;
+    min-width: 40px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+/* Animación de corazón */
+.heart-animation {
+    animation: heartbeat 1.5s infinite;
+    color: #FF0000;
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.15);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    75% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Responsive para móviles */
+@media (max-width: 480px) {
+    .audio-app {
+        padding: 1.5rem 0.8rem;
+    }
+
+    .audio-item {
+        padding: 1.2rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .audio-player-wrapper {
+        gap: 0.8rem;
+    }
+
+    .heart-indicator {
+        font-size: 1.8rem;
+        min-width: 36px;
+    }
+}

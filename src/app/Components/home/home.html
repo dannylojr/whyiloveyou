@@ -1,0 +1,56 @@
+<div class="buscador">
+    <input type="number" [(ngModel)]="filtroNumero" placeholder="Buscar razón por número..." />
+</div>
+
+<div *ngIf="todasDesbloqueadas; else razonesView" class="collage-container">
+    <div class="collage-overlay">
+        <h2>🎉 ¡Sorpresa! 🎉</h2>
+        <p>{{ carta }}</p>
+    </div>
+</div>
+
+<ng-template #razonesView>
+    <section class="cssletter">
+        <div class="envelope-grid">
+            <div class="envelope" *ngFor="let razon of razonesFiltradas(); let i = index"
+                [class.active]="abierto.has(razon.numero)" (click)="abrirRazon(razon)">
+
+                <button class="heart" id="openEnvelope-{{razon.numero}}"
+                    [attr.aria-label]="'Abrir sobre número ' + razon.numero" type="button">
+                    <span class="heart-text">{{ razon.numero }}</span>
+                </button>
+
+                <div class="envelope-flap"></div>
+                <div class="envelope-folds">
+                    <div class="envelope-left"></div>
+                    <div class="envelope-right"></div>
+                    <div class="envelope-bottom"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="letters">
+            <blockquote class="letter center" *ngFor="let razon of razonesFiltradas(); let i = index"
+                [id]="'letter-' + razon.numero" tabindex="0"
+                [style.display]="abierto.has(razon.numero) ? 'flex' : 'none'">
+
+                <button class="closeLetter" [title]="'Cerrar carta de la razón ' + razon.numero"
+                    [attr.aria-label]="'Cerrar carta de la razón ' + razon.numero" (click)="cerrarRazon(razon)">
+                    Cerrar carta {{ razon.numero }}
+                </button>
+
+                <ng-container *ngIf="razon.desbloqueado; else bloqueado">
+                    <p>{{ razon.texto }}</p>
+                </ng-container>
+
+                <ng-template #bloqueado>
+                    <p class="candado">🔒</p>
+                    <p><small>Esta razón está bloqueada</small></p>
+                    <p><small>Desbloquea las razones en orden secuencial</small></p>
+                </ng-template>
+
+                <cite>Razón {{ razon.numero }}</cite>
+            </blockquote>
+        </div>
+    </section>
+</ng-template>

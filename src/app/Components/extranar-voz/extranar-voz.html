@@ -1,0 +1,25 @@
+<div class="audio-app">
+    <div class="app-header">
+        <h1 class="app-title">Cuando extrañes mi voz</h1>
+        <p class="app-subtitle">Selecciona un mensaje para escucharme</p>
+    </div>
+
+    <div class="audio-collection">
+        <div *ngFor="let audio of audios" class="audio-item">
+            <div class="audio-content">
+                <h3 class="audio-title">{{ audio.titulo }}</h3>
+                <div class="audio-player-wrapper">
+                    <audio #audioRef (play)="activarLatido(audio.titulo)" (pause)="desactivarLatido(audio.titulo)"
+                        controls [src]="audio.ruta" class="audio-element">
+                        Tu navegador no soporta el elemento de audio.
+                    </audio>
+                    <div [ngClass]="{'heart-animation': audioActivo === audio.titulo}" class="heart-indicator">
+                        ❤️
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Espacio adicional al final -->
+  <div class="bottom-spacer"></div>
+</div>

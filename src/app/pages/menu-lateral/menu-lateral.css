@@ -1,0 +1,544 @@
+/* Import Google Font */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap");
+
+/* Overlay de fondo */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1050;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Botón hamburguesa mejorado */
+.hamburger {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(145deg, #8B0000, #A52A2A);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    cursor: pointer;
+    z-index: 1200;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.hamburger:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-color: #DC143C;
+}
+
+.hamburger:active {
+    transform: scale(0.95);
+}
+
+/* Líneas del hamburger */
+.hamburger-line {
+    width: 24px;
+    height: 2px;
+    background: #FAEBD7;
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Animación del hamburger cuando está activo */
+.hamburger.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.hamburger.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Contenedor del menú lateral */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 340px;
+    height: 100vh;
+    background: linear-gradient(145deg,
+            #8B0000 0%,
+            #6b0000 25%,
+            #A52A2A 75%,
+            #8B0000 100%);
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1100;
+    overflow: hidden;
+    box-shadow:
+        4px 0 40px rgba(0, 0, 0, 0.4),
+        inset -1px 0 0 rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.side-menu.open {
+    transform: translateX(0);
+}
+
+/* Efecto de textura y profundidad */
+.side-menu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(0, 0, 0, 0.1) 0%, transparent 50%),
+        linear-gradient(45deg, transparent 0%, rgba(255, 255, 255, 0.02) 50%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.side-menu>* {
+    position: relative;
+    z-index: 2;
+}
+
+/* Header del menú */
+.menu-header {
+    padding: 25px 25px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.menu-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 25px;
+    right: 25px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #DC143C, transparent);
+}
+
+/* Botón de cerrar mejorado */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+}
+
+.close-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1) rotate(90deg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.close-icon {
+    color: #FAEBD7;
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.close-btn:hover .close-icon {
+    color: #FFE4E1;
+}
+
+/* Marca/Brand del menú */
+.menu-brand {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.brand-icon {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    animation: heartbeat 2s ease-in-out infinite;
+}
+
+.brand-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #FFE4E1;
+    margin: 0 0 5px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.brand-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: rgba(250, 235, 215, 0.7);
+    margin: 0;
+    font-weight: 400;
+}
+
+/* Lista del menú */
+.menu-list {
+    list-style: none;
+    padding: 20px 0;
+    margin: 0;
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* Items del menú */
+.menu-item {
+    margin: 0;
+    position: relative;
+}
+
+.menu-link {
+    display: flex;
+    align-items: center;
+    padding: 16px 25px;
+    color: #FAEBD7;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-left: 3px solid transparent;
+    position: relative;
+    gap: 15px;
+}
+
+/* Efecto hover mejorado */
+.menu-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg,
+            rgba(220, 20, 60, 0.1) 0%,
+            rgba(220, 20, 60, 0.05) 50%,
+            transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-link:hover::before {
+    opacity: 1;
+}
+
+.menu-link:hover {
+    color: #FFE4E1;
+    border-left-color: #DC143C;
+    transform: translateX(8px);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Estado activo */
+.menu-link.active {
+    color: #FFE4E1;
+    background: rgba(220, 20, 60, 0.2);
+    border-left-color: #DC143C;
+    font-weight: 600;
+    box-shadow:
+        inset 0 0 20px rgba(0, 0, 0, 0.2),
+        0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.menu-link.active::before {
+    opacity: 1;
+}
+
+/* Iconos del menú */
+.menu-icon {
+    font-size: 1.2rem;
+    min-width: 24px;
+    text-align: center;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-link:hover .menu-icon {
+    transform: scale(1.2) rotate(5deg);
+}
+
+/* Texto del menú */
+.menu-text {
+    flex: 1;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* Flecha indicadora */
+.menu-arrow {
+    font-size: 14px;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: #DC143C;
+}
+
+.menu-link:hover .menu-arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.menu-link.active .menu-arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Footer del menú */
+.menu-footer {
+    padding: 20px 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.footer-decoration {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.heart-pulse {
+    font-size: 1.5rem;
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.footer-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: rgba(250, 235, 215, 0.7);
+    margin: 0;
+    font-weight: 400;
+}
+
+/* Scrollbar personalizada */
+.menu-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.menu-list::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+}
+
+.menu-list::-webkit-scrollbar-thumb {
+    background: #DC143C;
+    border-radius: 3px;
+    transition: background 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-list::-webkit-scrollbar-thumb:hover {
+    background: #FFE4E1;
+}
+
+/* Animaciones */
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes slideInStagger {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Animación escalonada para los items del menú */
+.side-menu.open .menu-item:nth-child(1) {
+    animation: slideInStagger 0.3s ease 0.1s both;
+}
+
+.side-menu.open .menu-item:nth-child(2) {
+    animation: slideInStagger 0.3s ease 0.2s both;
+}
+
+.side-menu.open .menu-item:nth-child(3) {
+    animation: slideInStagger 0.3s ease 0.3s both;
+}
+
+.side-menu.open .menu-item:nth-child(4) {
+    animation: slideInStagger 0.3s ease 0.4s both;
+}
+
+.side-menu.open .menu-item:nth-child(5) {
+    animation: slideInStagger 0.3s ease 0.5s both;
+}
+
+.side-menu.open .menu-item:nth-child(6) {
+    animation: slideInStagger 0.3s ease 0.6s both;
+}
+
+.side-menu.open .menu-item:nth-child(7) {
+    animation: slideInStagger 0.3s ease 0.7s both;
+}
+
+.side-menu.open .menu-item:nth-child(8) {
+    animation: slideInStagger 0.3s ease 0.8s both;
+}
+
+.side-menu.open .menu-item:nth-child(9) {
+    animation: slideInStagger 0.3s ease 0.9s both;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .side-menu {
+        width: 90%;
+        max-width: 320px;
+    }
+
+    .hamburger {
+        width: 45px;
+        height: 45px;
+        top: 15px;
+        left: 8px;
+    }
+
+    .hamburger-line {
+        width: 20px;
+    }
+
+    .menu-link {
+        padding: 14px 20px;
+        font-size: 14px;
+    }
+
+    .menu-icon {
+        font-size: 1.1rem;
+    }
+
+    .brand-title {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .side-menu {
+        width: 95%;
+    }
+
+    .menu-link {
+        padding: 12px 18px;
+    }
+
+    .menu-header {
+        padding: 20px 20px 15px;
+    }
+}
+
+/* Tablet responsive */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .side-menu {
+        width: 320px;
+    }
+}
+
+/* Large screens */
+@media (min-width: 1025px) {
+    .side-menu {
+        width: 360px;
+    }
+
+    .menu-link {
+        padding: 18px 28px;
+        font-size: 15px;
+    }
+
+    .menu-icon {
+        font-size: 1.3rem;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+    .side-menu,
+    .hamburger,
+    .close-btn,
+    .menu-link,
+    .menu-icon,
+    .menu-arrow,
+    .heart-pulse {
+        transition: none;
+        animation: none;
+    }
+}
+
+/* Focus styles para accesibilidad */
+.hamburger:focus,
+.close-btn:focus,
+.menu-link:focus {
+    outline: 2px solid #DC143C;
+    outline-offset: 2px;
+}
+
+/* Estados adicionales */
+.menu-link:active {
+    transform: scale(0.98);
+}
+
+/* Mejoras de contraste para accesibilidad */
+@media (prefers-contrast: high) {
+    .menu-link {
+        color: #FFFFFF;
+        border: 1px solid transparent;
+    }
+
+    .menu-link:hover,
+    .menu-link.active {
+        color: #FFFFFF;
+        border-color: #FF0000;
+    }
+}

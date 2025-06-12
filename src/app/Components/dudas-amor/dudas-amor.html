@@ -1,0 +1,62 @@
+<div class="love-doubts-container">
+    <!-- Header principal con foto -->
+    <div class="doubt-header">
+        <div class="heart-photo-frame">
+            <div class="heart-border"></div>
+            <div class="heart-shape">
+                <img src="assets/images/dudando.jpeg"
+                    alt="Foto de amor" class="heart-portrait">
+            </div>
+        </div>
+        <h1 class="doubt-title">¿ESTÁS DUDANDO?</h1>
+        <div class="title-divider"></div>
+    </div>
+
+    <!-- Botón principal -->
+    <button class="love-button" (click)="toggleCarta()">
+        <span id="buttonText">{{ buttonText }}</span>
+        <span class="heart-icon">❤️</span>
+    </button>
+
+    <!-- Carta de amor -->
+    <div class="love-letter" [class.show]="mostrarCarta" [style.display]="mostrarCarta ? 'block' : 'none'" #loveLetter>
+        <div class="letter-content">
+            <p class="letter-text">
+                Mi niña linda, yo sé que van a haber problemas que tal vez se vean difíciles de
+                resolver, pero recuerda que una relación también se construye a base de problemas, nos hace más fuertes
+                y más unidos. Así que mi amor no dudes de nuestro amor, porque yo sé que es verdadero y si tengo que
+                cambiar para solucionar un problema, lo haré, porque amarte también es saber cómo te gusta sentirte
+                amada. Lo haré para que te sientas cómoda, para así seguir construyendo una vida contigo. Te amo y no
+                dudes nunca de mis sentimientos porque son lo más sincero que puedo darte de mí.
+            </p>
+            <div class="letter-signature">
+                <p class="signature-text">Con todo mi amor,</p>
+                <div class="signature-name">
+                    Danny
+                    <span class="signature-heart">❤️</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Galería de recuerdos -->
+    <div class="love-memories">
+        <h2 class="memories-title">RECUERDA QUE</h2>
+        <div class="memories-grid">
+            <div class="memory-card" *ngFor="let memory of memories; let i = index"
+                [style.animation-delay]="(i * 0.2 + 0.2) + 's'">
+                <div class="memory-image-container">
+                    <img [src]="memory.image" [alt]="memory.alt" class="memory-image">
+                    <div class="memory-overlay"></div>
+                </div>
+                <div class="memory-content">
+                    <p class="memory-text">{{ memory.text }}</p>
+                    <div class="memory-hearts">
+                        <span *ngFor="let heart of memory.hearts; let j = index" [style.animation-delay]="j + 's'">{{
+                            heart }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,622 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* RESET Y BASE */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:host {
+  display: block;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #8B0000 0%, #A52A2A 30%, #CD5C5C 70%, #8B0000 100%);
+  min-height: 100vh;
+  color: #F5E8C7;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.love-doubts-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  position: relative;
+}
+
+/* EFECTOS DE FONDO */
+.love-doubts-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(205, 92, 92, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(139, 0, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(165, 42, 42, 0.1) 0%, transparent 50%);
+  z-index: -1;
+  animation: backgroundFloat 20s ease-in-out infinite;
+}
+
+/* HEADER PRINCIPAL */
+.doubt-header {
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+/* CONTENEDOR DE FOTO CON CORAZÓN */
+.heart-photo-frame {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  margin: 0 auto 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heart-border {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #A52A2A, #8B0000, #CD5C5C, #A52A2A);
+  animation: rotate 8s linear infinite;
+  opacity: 0.8;
+}
+
+.heart-shape {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(135deg, #A52A2A, #8B0000);
+  padding: 8px;
+  box-shadow: 
+    0 20px 40px rgba(139, 0, 0, 0.4),
+    inset 0 2px 10px rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.heart-shape:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 
+    0 30px 60px rgba(139, 0, 0, 0.5),
+    inset 0 2px 10px rgba(255, 255, 255, 0.2);
+}
+
+.heart-portrait {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.4s ease;
+  filter: brightness(1.1) contrast(1.1);
+}
+
+.heart-shape:hover .heart-portrait {
+  transform: scale(1.1);
+}
+
+/* TÍTULO PRINCIPAL */
+.doubt-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #F5E8C7;
+  margin: 30px 0;
+  text-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(245, 232, 199, 0.3);
+  letter-spacing: -0.02em;
+  position: relative;
+  animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+.doubt-title::before {
+  content: '✨';
+  position: absolute;
+  left: -50px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+.doubt-title::after {
+  content: '✨';
+  position: absolute;
+  right: -50px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  animation: sparkle 2s ease-in-out infinite 1s;
+}
+
+/* LÍNEA DECORATIVA */
+.title-divider {
+  width: 150px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #F5E8C7, transparent);
+  margin: 20px auto;
+  border-radius: 2px;
+  position: relative;
+}
+
+.title-divider::before,
+.title-divider::after {
+  content: '❤️';
+  position: absolute;
+  top: -8px;
+  font-size: 20px;
+  animation: heartFloat 3s ease-in-out infinite;
+}
+
+.title-divider::before {
+  left: -30px;
+}
+
+.title-divider::after {
+  right: -30px;
+  animation-delay: 1.5s;
+}
+
+/* BOTÓN PRINCIPAL */
+.love-button {
+  background: linear-gradient(135deg, #8B0000, #A52A2A, #8B0000);
+  background-size: 200% 200%;
+  color: #F5E8C7;
+  border: 3px solid rgba(245, 232, 199, 0.3);
+  padding: 18px 40px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 
+    0 10px 30px rgba(139, 0, 0, 0.4),
+    inset 0 2px 10px rgba(255, 255, 255, 0.1);
+  margin: 40px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  font-family: inherit;
+  min-height: 56px;
+  position: relative;
+  overflow: hidden;
+  animation: buttonPulse 4s ease-in-out infinite;
+}
+
+.love-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s;
+}
+
+.love-button:hover::before {
+  left: 100%;
+}
+
+.love-button:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 
+    0 20px 40px rgba(139, 0, 0, 0.5),
+    inset 0 2px 15px rgba(255, 255, 255, 0.2);
+  background-position: 100% 100%;
+  border-color: rgba(245, 232, 199, 0.6);
+}
+
+.heart-icon {
+  font-size: 22px;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.love-button:hover .heart-icon {
+  transform: scale(1.3) rotate(15deg);
+  animation: heartBeat 0.6s ease-in-out;
+}
+
+/* CARTA DE AMOR */
+.love-letter {
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto 80px;
+  background: linear-gradient(145deg, rgba(255, 248, 220, 0.98), rgba(255, 248, 220, 0.95));
+  border-radius: 25px;
+  padding: 50px;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: all 0.4s ease;
+  position: relative;
+  border: 2px solid rgba(245, 232, 199, 0.3);
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.love-letter.show {
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.love-letter::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: linear-gradient(90deg, #8B0000, #A52A2A, #CD5C5C, #A52A2A, #8B0000);
+  border-radius: 25px 25px 0 0;
+}
+
+.love-letter::after {
+  content: '💌';
+  position: absolute;
+  top: -15px;
+  right: 30px;
+  font-size: 30px;
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
+}
+
+.love-letter:hover {
+  transform: translateY(-8px);
+  box-shadow: 
+    0 35px 70px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.letter-content {
+  position: relative;
+}
+
+.letter-text {
+  font-size: 18px;
+  line-height: 1.9;
+  color: #4B3F2F;
+  margin-bottom: 40px;
+  font-weight: 400;
+  text-align: justify;
+  text-indent: 30px;
+  position: relative;
+}
+
+.letter-text::first-letter {
+  font-size: 3em;
+  font-weight: 700;
+  color: #8B0000;
+  float: left;
+  line-height: 1;
+  margin-right: 8px;
+  margin-top: 4px;
+}
+
+.letter-signature {
+  text-align: right;
+  margin-top: 30px;
+}
+
+.signature-text {
+  font-style: italic;
+  color: #8B0000;
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.signature-name {
+  font-size: 24px;
+  font-weight: 700;
+  color: #A52A2A;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.signature-heart {
+  font-size: 28px;
+  animation: heartBeatSlow 2s ease-in-out infinite;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* GALERÍA DE RECUERDOS */
+.love-memories {
+  width: 100%;
+  margin-top: 80px;
+}
+
+.memories-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  text-align: center;
+  color: #F5E8C7;
+  margin-bottom: 60px;
+  letter-spacing: -0.02em;
+  text-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(245, 232, 199, 0.3);
+  position: relative;
+}
+
+.memories-title::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #F5E8C7, transparent);
+  border-radius: 2px;
+}
+
+.memories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.memory-card {
+  background: linear-gradient(145deg, rgba(255, 248, 220, 0.98), rgba(255, 248, 220, 0.95));
+  border-radius: 25px;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(245, 232, 199, 0.3);
+  position: relative;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.memory-card:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  border-color: rgba(139, 0, 0, 0.4);
+}
+
+.memory-image-container {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  background: linear-gradient(45deg, #f5f5f5, #e8e8e8);
+}
+
+.memory-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.6s ease;
+  filter: brightness(1.1) contrast(1.05);
+}
+
+.memory-card:hover .memory-image {
+  transform: scale(1.1) rotate(1deg);
+}
+
+.memory-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(139, 0, 0, 0.6) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.memory-card:hover .memory-overlay {
+  opacity: 1;
+}
+
+.memory-content {
+  padding: 35px;
+  text-align: center;
+  position: relative;
+}
+
+.memory-text {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #4B3F2F;
+  font-weight: 500;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.memory-hearts {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.memory-hearts span {
+  font-size: 24px;
+  animation: heartFloat 3s ease-in-out infinite;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* ANIMACIONES */
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes titleGlow {
+  0%, 100% { text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 30px rgba(245, 232, 199, 0.3); }
+  50% { text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 50px rgba(245, 232, 199, 0.5); }
+}
+
+@keyframes sparkle {
+  0%, 100% { transform: translateY(-50%) scale(1) rotate(0deg); opacity: 0.7; }
+  50% { transform: translateY(-60%) scale(1.2) rotate(180deg); opacity: 1; }
+}
+
+@keyframes heartFloat {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-8px) scale(1.1); }
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1.3) rotate(15deg); }
+  50% { transform: scale(1.5) rotate(15deg); }
+}
+
+@keyframes heartBeatSlow {
+  0%, 50%, 100% { transform: scale(1); }
+  25%, 75% { transform: scale(1.1); }
+}
+
+@keyframes buttonPulse {
+  0%, 100% { box-shadow: 0 10px 30px rgba(139, 0, 0, 0.4), inset 0 2px 10px rgba(255, 255, 255, 0.1); }
+  50% { box-shadow: 0 15px 35px rgba(139, 0, 0, 0.5), inset 0 2px 15px rgba(255, 255, 255, 0.15); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes backgroundFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(1deg); }
+  66% { transform: translateY(5px) rotate(-1deg); }
+}
+
+/* RESPONSIVE DESIGN */
+@media screen and (max-width: 768px) {
+  .love-doubts-container {
+    padding: 30px 15px;
+  }
+
+  .doubt-title {
+    font-size: 2.2rem;
+  }
+
+  .doubt-title::before,
+  .doubt-title::after {
+    display: none;
+  }
+
+  .heart-photo-frame {
+    width: 220px;
+    height: 220px;
+  }
+
+  .heart-shape {
+    width: 180px;
+    height: 180px;
+  }
+
+  .heart-border {
+    width: 240px;
+    height: 240px;
+  }
+
+  .love-letter {
+    padding: 35px 25px;
+  }
+
+  .letter-text {
+    font-size: 16px;
+    text-indent: 20px;
+  }
+
+  .memories-title {
+    font-size: 2.2rem;
+  }
+
+  .memories-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .memory-image-container {
+    height: 220px;
+  }
+
+  .memory-content {
+    padding: 25px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .love-doubts-container {
+    padding: 20px 10px;
+  }
+
+  .doubt-title {
+    font-size: 1.8rem;
+  }
+
+  .heart-photo-frame {
+    width: 180px;
+    height: 180px;
+  }
+
+  .heart-shape {
+    width: 150px;
+    height: 150px;
+  }
+
+  .heart-border {
+    width: 200px;
+    height: 200px;
+  }
+
+  .love-button {
+    padding: 14px 28px;
+    font-size: 16px;
+  }
+
+  .love-letter {
+    padding: 25px 20px;
+  }
+
+  .letter-text {
+    font-size: 15px;
+    text-indent: 15px;
+  }
+
+  .memories-title {
+    font-size: 1.8rem;
+  }
+
+  .memory-image-container {
+    height: 200px;
+  }
+
+  .memory-content {
+    padding: 20px;
+  }
+}
